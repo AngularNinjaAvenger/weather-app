@@ -1,0 +1,107 @@
+.container 
+{
+    width: 50%;
+    background: #100f14;
+    color: white;
+    width: 100%;
+    height: 96vh;
+    max-width: 699px;
+    margin: 0px auto;
+}
+
+.wrapper     
+{
+    height: 100%;
+
+}
+
+.header-container 
+{
+    height: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    background: #32353e;
+
+}
+
+.header-top-wrapper 
+{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    align-items: center;
+
+}
+
+.header-bottom-wrapper 
+{
+    width: 100%;
+
+}
+
+.bottom-container 
+{
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.weather-day-info-container 
+{
+    display: flex;
+    width: 95%;
+    align-items: center;
+    justify-content: space-around;
+    background: #32353e;
+    margin: 10px 0px;
+    border-radius: 13px;
+}
+
+.weather-info-type-wrapper 
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+
+}
+
+.weather-image-wrapper 
+{
+    background: blueviolet;
+    width: 60%;
+    height: 60px;
+
+}
+
+.progress-bar-container 
+{
+    width: 90%;
+    background: #32353e;
+    margin: 10px auto;
+    border: 3px solid black;
+    border-radius: 20px;
+    height: max-content;
+    padding: 2px;
+
+}
+
+.progress-bar 
+{
+    background: #F29E0B;
+    border-radius: 20px;
+    width: 61%;
+    height: 10px;
+}
+
+.reloading-timmer 
+{
+    font-weight: bold;
+    margin-left: 30px;
+
+}
