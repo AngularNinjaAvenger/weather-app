@@ -1,8 +1,33 @@
-import React from 'react';
+import React, { Component } from 'react'
 import "./style.css"
-function App() {
-  return (
-    <div className="container">
+import { api } from './ApiInstance'
+import { FORCAST_URL } from './constance'
+
+
+
+
+
+
+class App extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+         
+    }
+  }
+
+  getForcast=()=>{
+    api.get(FORCAST_URL).then((res,err)=>{
+      console.log(res);
+    }).catch((err)=>{
+      console.log(err.response);
+    })
+  }
+
+  render() {
+    return (
+      <div className="container">
       <div className="wrapper">
         <div className="header-container">
           <div className="header-top-wrapper">
@@ -36,7 +61,8 @@ function App() {
         </div>
       </div>
     </div>
-  )
+    )
+  }
 }
 
-export default App;
+export default App
