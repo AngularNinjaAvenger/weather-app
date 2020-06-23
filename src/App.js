@@ -19,9 +19,7 @@ class App extends Component {
   getForcast=()=>{
     api.get(FORCAST_URL).then((res,err)=>{
       this.updateState(res);
-    }).catch((err)=>{
-      console.log(err,"<---");
-    })
+    }).catch((err)=>{})
   }
 
   getCurrentWeather=()=>{
@@ -32,10 +30,10 @@ class App extends Component {
         time:date.getHours() + ":" + date.getMinutes() + "GMT",
         icon:res.data.weather[0].icon
       }
-      this.setState({headerInfo})
-    }).catch((err)=>{
-      console.log(err.response);
-    })
+      this.setState({headerInfo},()=>{
+        console.log(this.state)
+      })
+    }).catch((err)=>{})
   }
   // returns array with Indices of the next five days in the list
   // from the API data (every day at 12:00 pm)
@@ -83,12 +81,13 @@ class App extends Component {
   componentDidMount() {
     this.getCurrentWeather();
     this.getForcast();
+    console.log(this.state.headerInfo)
   }
   render() {
     return (
       <div className="container">
       <div className="wrapper">
-        <Header />
+        <Header data={this.state.headerInfo} />
         <div className="bottom-container">
           {this.state.days.map((item,idx)=><Day data={item}/>)}  
         </div>

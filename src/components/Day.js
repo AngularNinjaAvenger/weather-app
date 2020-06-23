@@ -1,7 +1,7 @@
 import React from 'react';
 
 function Day(props) {
-    console.log(props)
+    
     return (
         <div className="weather-day-info-container">
         <h1>{props.data.name}</h1>
