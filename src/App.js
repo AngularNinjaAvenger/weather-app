@@ -50,7 +50,7 @@ class App extends Component {
   };
 
   getCurrentWeather = () => {
-    api
+    api 
       .get(CURRENT_WEATHER_URL)
       .then((res, err) => {
         const date = new Date();
@@ -65,14 +65,18 @@ class App extends Component {
         });
       })
       .catch((err) => {
-        // checkiing to see if we have the weather cached
-        const state = this.state;
-        if(state["cachedWeather"]){
-          state["weather"] = state["cachedWeather"]; 
-          this.setState({state})
-        }
+        this.retriveCachedWeather()
       });
   };
+
+  retriveCachedWeather=()=>{
+      // checkiing to see if we have the weather cached
+      const state = this.state;
+      if(state["cachedWeather"]){
+        state["weather"] = state["cachedWeather"]; 
+        this.setState({state})
+      }
+  }
   // returns array with Indices of the next five days in the list
   // from the API data (every day at 12:00 pm)
   getDayIndices = (data) => {

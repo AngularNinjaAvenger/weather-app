@@ -5,7 +5,7 @@ function Day(props) {
     <div className="weather-day-info-container">
       <div className="weather-day-info-inner-left">
         <h1>{props.data.name}</h1>
-        <h1>{props.data.temp ? Math.floor(props.data.temp) : 0}</h1>
+        <h1>{props.data.temp ? Math.floor(props.data.temp) : 0} &#8451; </h1>
       </div>
       <div className="weather-info-type-wrapper">
         <div className="weather-image-wrapper">

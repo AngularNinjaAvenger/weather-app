@@ -34,7 +34,7 @@ function Header(props) {
         <div className="date-wrapper">
           <h4>{time}</h4>
         </div>
-        <h1>{temperature}</h1>
+        <h1>{temperature} &#8451; </h1>
       </div>
       <div className="header-bottom-wrapper">
         <span className="reloading-timmer">Reloading in {progress}s</span>
