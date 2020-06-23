@@ -13,4 +13,4 @@
 
 If i had more time, i would have allowed users search for weather and weather forecast for other location,i would have allowed users to make multiple searches in different locations and rendered current weather and forecast for all locations   simultaneous . 
 
-I can't wait to join the __Nova Futur__  \\/__(^_^)_\/
+I can't wait to join the __Nova Futur__  team \\/__(^_^)_\/
