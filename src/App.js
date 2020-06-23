@@ -18,6 +18,8 @@ class App extends Component {
         { name: "THU" },
         { name: "FRI" },
       ],
+      cachedWeather:{},
+      cachedForcast:{},
     };
   }
 
@@ -37,7 +39,14 @@ class App extends Component {
         this.updateState(res);
         if (cb) cb();
       })
-      .catch((err) => {});
+      .catch((err) => {
+        // checkiing to see if we have the forcast cached
+        const state = this.state;
+        if(state["cachedForcast"]){
+          state["days"] = state["cachedForcast"]; 
+          this.setState({state})
+        }
+      });
   };
 
   getCurrentWeather = () => {
@@ -45,16 +54,24 @@ class App extends Component {
       .get(CURRENT_WEATHER_URL)
       .then((res, err) => {
         const date = new Date();
-        const headerInfo = {
+        const weather = {
           temp: res.data.main.temp,
           time: date.getHours() + ":" + date.getMinutes() + "GMT",
           icon: res.data.weather[0].icon,
         };
-        this.setState({ headerInfo }, () => {
+
+        this.setState({ weather,cachedWeather:weather }, () => {
           console.log(this.state);
         });
       })
-      .catch((err) => {});
+      .catch((err) => {
+        // checkiing to see if we have the weather cached
+        const state = this.state;
+        if(state["cachedWeather"]){
+          state["weather"] = state["cachedWeather"]; 
+          this.setState({state})
+        }
+      });
   };
   // returns array with Indices of the next five days in the list
   // from the API data (every day at 12:00 pm)
@@ -93,9 +110,11 @@ class App extends Component {
         temp: data.list[dayIndices[i]].main.temp,
       });
     }
+    // storing days and caching forcast
     const state = this.state;
     state["city"] = city;
     state["days"] = days;
+    state["cachedForcast"] = days;
     this.setState({ state });
   };
 
@@ -106,7 +125,7 @@ class App extends Component {
   fetchRequest = (cb) => {
     this.getCurrentWeather();
     this.getForcast(cb);
-    console.log(this.state.headerInfo);
+    console.log(this.state.weather);
   };
 
   render() {
@@ -114,7 +133,7 @@ class App extends Component {
       <div className="container">
         <div className="wrapper">
           <Header
-            data={this.state.headerInfo}
+            data={this.state.weather}
             reFetchRequest={(cb) => {
               this.fetchRequest(cb);
             }}
