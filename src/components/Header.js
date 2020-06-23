@@ -26,7 +26,7 @@ function Header(props) {
 
   const progressBarWidth = (progress * 10) / 6;
   const time = `${props.data ? props.data.time : "00:00 GMT"}`;
-  const temperature = `${props.data ? Math.floor(props.data.temp) : 0}`
+  const temperature = `${props.data ? Math.floor(props.data.temp) : 0}`;
   return (
     <div className="header-container">
       <div className="header-top-wrapper">

@@ -76,30 +76,7 @@
   color: #5a5b5f;
 }
 
-@keyframes animate-day-container{
-  from{
-    background: #5a5b5f;
-    top:0px;
-  }
-  to{
-    background: #e5e5e5;
-    color: #5a5b5f;
-    top:0px;
-  }
-}
 
-
-@keyframes weather-day-info-card{
-  0%{
-    top:0px;
-  }
-  50%{
-    top:8px;
-  }
-  100%{
-    top:0px;
-  }
-}
 .date-wrapper 
 {
     padding: 10px;
@@ -150,4 +127,30 @@
 
 .weather-day-info-inner-left > h1:nth-child(2){
   margin: 0px 10px
+}
+
+
+@keyframes animate-day-container{
+  from{
+    background: #5a5b5f;
+    top:0px;
+  }
+  to{
+    background: #e5e5e5;
+    color: #5a5b5f;
+    top:0px;
+  }
+}
+
+
+@keyframes weather-day-info-card{
+  0%{
+    top:0px;
+  }
+  50%{
+    top:8px;
+  }
+  100%{
+    top:0px;
+  }
 }

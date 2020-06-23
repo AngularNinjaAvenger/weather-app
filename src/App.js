@@ -18,8 +18,8 @@ class App extends Component {
         { name: "THU" },
         { name: "FRI" },
       ],
-      cachedWeather:{},
-      cachedForcast:{},
+      cachedWeather: {},
+      cachedForcast: {},
     };
   }
 
@@ -42,15 +42,15 @@ class App extends Component {
       .catch((err) => {
         // checkiing to see if we have the forcast cached
         const state = this.state;
-        if(state["cachedForcast"]){
-          state["days"] = state["cachedForcast"]; 
-          this.setState({state})
+        if (state["cachedForcast"]) {
+          state["days"] = state["cachedForcast"];
+          this.setState({ state });
         }
       });
   };
 
   getCurrentWeather = () => {
-    api 
+    api
       .get(CURRENT_WEATHER_URL)
       .then((res, err) => {
         const date = new Date();
@@ -60,23 +60,23 @@ class App extends Component {
           icon: res.data.weather[0].icon,
         };
 
-        this.setState({ weather,cachedWeather:weather }, () => {
+        this.setState({ weather, cachedWeather: weather }, () => {
           console.log(this.state);
         });
       })
       .catch((err) => {
-        this.retriveCachedWeather()
+        this.retriveCachedWeather();
       });
   };
 
-  retriveCachedWeather=()=>{
-      // checkiing to see if we have the weather cached
-      const state = this.state;
-      if(state["cachedWeather"]){
-        state["weather"] = state["cachedWeather"]; 
-        this.setState({state})
-      }
-  }
+  retriveCachedWeather = () => {
+    // checkiing to see if we have the weather cached
+    const state = this.state;
+    if (state["cachedWeather"]) {
+      state["weather"] = state["cachedWeather"];
+      this.setState({ state });
+    }
+  };
   // returns array with Indices of the next five days in the list
   // from the API data (every day at 12:00 pm)
   getDayIndices = (data) => {
