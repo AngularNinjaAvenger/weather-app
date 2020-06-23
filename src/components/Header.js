@@ -25,14 +25,16 @@ function Header(props) {
       : "";
 
   const progressBarWidth = (progress * 10) / 6;
+  const time = `${props.data ? props.data.time : "00:00 GMT"}`;
+  const temperature = `${props.data ? Math.floor(props.data.temp) : 0}`
   return (
     <div className="header-container">
       <div className="header-top-wrapper">
         <h1>LONDON</h1>
         <div className="date-wrapper">
-          <h4>{props.data ? props.data.time : "00:00"}</h4>
+          <h4>{time}</h4>
         </div>
-        <h1>{props.data ? Math.floor(props.data.temp) : 0}</h1>
+        <h1>{temperature}</h1>
       </div>
       <div className="header-bottom-wrapper">
         <span className="reloading-timmer">Reloading in {progress}s</span>

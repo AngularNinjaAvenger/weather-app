@@ -10,12 +10,12 @@ class App extends Component {
     super(props);
 
     this.state = {
-      daysName: ["MON", "TUE", "WED", "THUR", "FRI"],
+      daysName: ["MON", "TUE", "WED", "THU", "FRI"],
       days: [
         { name: "MON" },
         { name: "TUE" },
         { name: "WED" },
-        { name: "THUR" },
+        { name: "THU" },
         { name: "FRI" },
       ],
     };
@@ -27,7 +27,7 @@ class App extends Component {
         { name: "MON" },
         { name: "TUE" },
         { name: "WED" },
-        { name: "THUR" },
+        { name: "THU" },
         { name: "FRI" },
       ],
     });

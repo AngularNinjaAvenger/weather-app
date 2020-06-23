@@ -1,3 +1,12 @@
+#root {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+
+}
+
 .container {
   width: 50%;
   background: #100f14;
@@ -6,10 +15,13 @@
   max-width: 699px;
   margin: 0px auto;
   height: max-content;
+  border-radius: 12px;
+  width: 500px;
 }
 
 .wrapper {
-  height: 100%;
+  height: max-content;
+  padding: 10px;
 }
 
 .header-container {
@@ -41,13 +53,60 @@
 }
 
 .weather-day-info-container {
-  display: flex;
-  width: 95%;
-  align-items: center;
-  justify-content: space-around;
-  background: #32353e;
-  margin: 10px 0px;
-  border-radius: 13px;
+    display: flex;
+    box-shadow: 1px 3px 14px 6px #1d2022;
+    width: 99%;
+    align-items: center;
+    justify-content: space-between;
+    margin: 5px 0px;
+    border-radius: 5px;
+    position: relative;
+    animation-name: weather-day-info-card;
+    animation-duration: 2s;
+    background: #5a5b5f;
+    animation-iteration-count: infinite;
+    padding: 0px 31px;
+}
+
+
+.weather-day-info-container:hover{
+  animation-name:animate-day-container;
+  animation-duration:1s;
+  background: #e5e5e5;
+  color: #5a5b5f;
+}
+
+@keyframes animate-day-container{
+  from{
+    background: #5a5b5f;
+    top:0px;
+  }
+  to{
+    background: #e5e5e5;
+    color: #5a5b5f;
+    top:0px;
+  }
+}
+
+
+@keyframes weather-day-info-card{
+  0%{
+    top:0px;
+  }
+  50%{
+    top:8px;
+  }
+  100%{
+    top:0px;
+  }
+}
+.date-wrapper 
+{
+    padding: 10px;
+    background: #111115;
+    margin-top: 5px;
+    border-radius: 5px;
+
 }
 
 .weather-info-type-wrapper {
@@ -66,7 +125,7 @@
   width: 90%;
   background: #32353e;
   margin: 10px auto;
-  border: 3px solid black;
+  border: 1px solid black;
   border-radius: 20px;
   height: max-content;
   padding: 2px;
@@ -86,6 +145,9 @@
 
 .weather-day-info-inner-left {
   display: flex;
-  width: 30%;
-  justify-content: space-between;
+  width: 50%;
+}
+
+.weather-day-info-inner-left > h1:nth-child(2){
+  margin: 0px 10px
 }
