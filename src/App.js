@@ -1,11 +1,9 @@
 import React, { Component } from 'react'
 import "./style.css"
 import { api } from './ApiInstance'
-import { FORCAST_URL } from './constance'
-
-
-
-
+import { FORCAST_URL, CURRENT_WEATHER_URL } from './constance'
+import Day from './components/Day'
+import Header from './components/Header'
 
 
 class App extends Component {
@@ -13,51 +11,87 @@ class App extends Component {
     super(props)
 
     this.state = {
-         
+         daysName:["MON","TUE","WED","THUR","FRI"]
     }
   }
 
   getForcast=()=>{
     api.get(FORCAST_URL).then((res,err)=>{
-      console.log(res);
+      this.updateState(res);
+      console.log(this.state)
+    }).catch((err)=>{
+      console.log(err,"<---");
+    })
+  }
+
+  getCurrentWeather=()=>{
+    api.get(CURRENT_WEATHER_URL).then((res,err)=>{
+      const date = new Date();
+      const headerInfo = {
+        temp:res.data.main.temp,
+        time:date.getHours() + ":" + date.getMinutes() + "GMT",
+        icon:res.data.weather[0].icon
+      }
+      this.setState({headerInfo})
     }).catch((err)=>{
       console.log(err.response);
     })
+  }
+  // returns array with Indices of the next five days in the list
+  // from the API data (every day at 12:00 pm)
+  getDayIndices =(data)=> {
+    data = data.data;
+    let dayIndices = [];
+    dayIndices.push(0);
+
+    let index = 0;
+    let tmp = data.list[0].dt_txt.slice(8, 10);
+
+    for (let i = 0; i < 4; i++) {
+      while (
+        tmp === data.list[index].dt_txt.slice(8, 10) ||
+        data.list[index].dt_txt.slice(11, 13) !== '15'
+      ) {
+        index++;
+      }
+      dayIndices.push(index);
+      tmp = data.list[index].dt_txt.slice(8, 10);
+    }
+    return dayIndices;
+  };
+
+  updateState=(data)=> {
+    const city = "London";
+    const days = [];
+    const dayIndices = this.getDayIndices(data);
+    data = data.data
+    for (let i = 0; i < 5; i++) {
+      days.push({
+        name:this.state.daysName[i],
+        date: data.list[dayIndices[i]].dt_txt,
+        weather_desc: data.list[dayIndices[i]].weather[0].description,
+        icon: data.list[dayIndices[i]].weather[0].icon,
+        temp: data.list[dayIndices[i]].main.temp
+      });
+    }
+    this.setState({
+      city: city,
+      days: days
+    });
+  };
+
+  componentDidMount() {
+    this.getCurrentWeather();
+    this.getForcast();
   }
 
   render() {
     return (
       <div className="container">
       <div className="wrapper">
-        <div className="header-container">
-          <div className="header-top-wrapper">
-            <h1>LONDON</h1>
-            <div className="date-wrapper">
-              <h4>18:36GMT</h4>
-            </div>
-            <h1>12*</h1>
-          </div>
-          <div className="header-bottom-wrapper">
-            <span className="reloading-timmer">Reloading in 20s</span>
-            <div className="progress-bar-container">
-              <div className="progress-bar-wrapper">
-                <div className="progress-bar">
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <Header />
         <div className="bottom-container">
-          <div className="weather-day-info-container">
-            <h1>MON</h1>
-            <h1>12*</h1>
-            <div className="weather-info-type-wrapper">
-              <div className="weather-image-wrapper">
-                img
-              </div>
-              <h2>{"WEATHER DESC"}</h2>
-            </div>
-          </div>
+          {["MON","TUE","WED","THUR","FRI"].map((item,idx)=><Day day={item}/>)}  
         </div>
       </div>
     </div>

@@ -6,7 +6,9 @@
 }
 
 body{
-  font-family: arial;
+  /* font-family: arial; */
+  font-family: 'Roboto', sans-serif;
+  font-weight: lighter;
 }
 
 h1,h2,h3,h4,h5,h6{

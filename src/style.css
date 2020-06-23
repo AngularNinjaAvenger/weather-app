@@ -4,9 +4,9 @@
     background: #100f14;
     color: white;
     width: 100%;
-    height: 96vh;
     max-width: 699px;
     margin: 0px auto;
+    height:max-content;
 }
 
 .wrapper     
