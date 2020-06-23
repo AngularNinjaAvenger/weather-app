@@ -1,10 +1,9 @@
 #root {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
 }
 
 .container {
@@ -53,37 +52,33 @@
 }
 
 .weather-day-info-container {
-    display: flex;
-    box-shadow: 1px 3px 14px 6px #1d2022;
-    width: 99%;
-    align-items: center;
-    justify-content: space-between;
-    margin: 5px 0px;
-    border-radius: 5px;
-    position: relative;
-    animation-name: weather-day-info-card;
-    animation-duration: 2s;
-    background: #5a5b5f;
-    animation-iteration-count: infinite;
-    padding: 0px 31px;
+  display: flex;
+  box-shadow: 1px 3px 14px 6px #1d2022;
+  width: 99%;
+  align-items: center;
+  justify-content: space-between;
+  margin: 5px 0px;
+  border-radius: 5px;
+  position: relative;
+  animation-name: weather-day-info-card;
+  animation-duration: 2s;
+  background: #5a5b5f;
+  animation-iteration-count: infinite;
+  padding: 0px 31px;
 }
 
-
-.weather-day-info-container:hover{
-  animation-name:animate-day-container;
-  animation-duration:1s;
+.weather-day-info-container:hover {
+  animation-name: animate-day-container;
+  animation-duration: 1s;
   background: #e5e5e5;
   color: #5a5b5f;
 }
 
-
-.date-wrapper 
-{
-    padding: 10px;
-    background: #111115;
-    margin-top: 5px;
-    border-radius: 5px;
-
+.date-wrapper {
+  padding: 10px;
+  background: #111115;
+  margin-top: 5px;
+  border-radius: 5px;
 }
 
 .weather-info-type-wrapper {
@@ -125,32 +120,30 @@
   width: 50%;
 }
 
-.weather-day-info-inner-left > h1:nth-child(2){
-  margin: 0px 10px
+.weather-day-info-inner-left > h1:nth-child(2) {
+  margin: 0px 10px;
 }
 
-
-@keyframes animate-day-container{
-  from{
+@keyframes animate-day-container {
+  from {
     background: #5a5b5f;
-    top:0px;
+    top: 0px;
   }
-  to{
+  to {
     background: #e5e5e5;
     color: #5a5b5f;
-    top:0px;
+    top: 0px;
   }
 }
 
-
-@keyframes weather-day-info-card{
-  0%{
-    top:0px;
+@keyframes weather-day-info-card {
+  0% {
+    top: 0px;
   }
-  50%{
-    top:8px;
+  50% {
+    top: 8px;
   }
-  100%{
-    top:0px;
+  100% {
+    top: 0px;
   }
 }
