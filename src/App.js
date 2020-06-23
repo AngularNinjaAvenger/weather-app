@@ -72,10 +72,10 @@ class App extends Component {
         temp: data.list[dayIndices[i]].main.temp
       });
     }
-    this.setState({
-      city: city,
-      days: days
-    });
+    const state = this.state;
+    state["city"] = city; 
+    state["days"] = days ; 
+    this.setState({state});
   };
 
   componentDidMount() {
@@ -83,6 +83,7 @@ class App extends Component {
     this.getForcast();
     console.log(this.state.headerInfo)
   }
+
   render() {
     return (
       <div className="container">

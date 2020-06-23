@@ -104,3 +104,11 @@
     margin-left: 30px;
 
 }
+
+.weather-day-info-inner-left{
+    
+    display: flex;
+    width: 30%;
+    justify-content: space-between;
+
+}
