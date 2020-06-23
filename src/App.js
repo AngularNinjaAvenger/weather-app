@@ -11,14 +11,14 @@ class App extends Component {
     super(props)
 
     this.state = {
-         daysName:["MON","TUE","WED","THUR","FRI"]
+         daysName:["MON","TUE","WED","THUR","FRI"],
+         days:[{name:"MON"},{name:"TUE"},{name:"WED"},{name:"THUR"},{name:"FRI"}]
     }
   }
 
   getForcast=()=>{
     api.get(FORCAST_URL).then((res,err)=>{
       this.updateState(res);
-      console.log(this.state)
     }).catch((err)=>{
       console.log(err,"<---");
     })
@@ -84,14 +84,13 @@ class App extends Component {
     this.getCurrentWeather();
     this.getForcast();
   }
-
   render() {
     return (
       <div className="container">
       <div className="wrapper">
         <Header />
         <div className="bottom-container">
-          {["MON","TUE","WED","THUR","FRI"].map((item,idx)=><Day day={item}/>)}  
+          {this.state.days.map((item,idx)=><Day data={item}/>)}  
         </div>
       </div>
     </div>
