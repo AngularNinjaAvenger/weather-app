@@ -14,6 +14,7 @@ function Day(props) {
               src={`http://openweathermap.org/img/wn/${props.data.icon}.png`}
               width={"100%"}
               height={"100%"}
+              alt={props.data.icon}
             />
           ) : (
             ""

@@ -14,7 +14,7 @@ function Header(props) {
   let timerHandler =
     props.data && preventTimer
       ? setTimeout(() => {
-          if (progress == 0) {
+          if (progress === 0) {
             clearTimeout(timerHandler);
             setPreventTimer(false);
             reCall();
