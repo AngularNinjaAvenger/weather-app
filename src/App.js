@@ -24,15 +24,6 @@ class App extends Component {
   }
 
   getForcast = (cb) => {
-    this.setState({
-      days: [
-        { name: "MON" },
-        { name: "TUE" },
-        { name: "WED" },
-        { name: "THU" },
-        { name: "FRI" },
-      ],
-    });
     api
       .get(FORCAST_URL)
       .then((res, err) => {
@@ -60,9 +51,7 @@ class App extends Component {
           icon: res.data.weather[0].icon,
         };
 
-        this.setState({ weather, cachedWeather: weather }, () => {
-          console.log(this.state);
-        });
+        this.setState({ weather, cachedWeather: weather });
       })
       .catch((err) => {
         this.retriveCachedWeather();
@@ -129,7 +118,6 @@ class App extends Component {
   fetchRequest = (cb) => {
     this.getCurrentWeather();
     this.getForcast(cb);
-    console.log(this.state.weather);
   };
 
   render() {
@@ -144,7 +132,7 @@ class App extends Component {
           />
           <div className="bottom-container">
             {this.state.days.map((item, idx) => (
-              <Day data={item} />
+              <Day key={idx} data={item} />
             ))}
           </div>
         </div>
